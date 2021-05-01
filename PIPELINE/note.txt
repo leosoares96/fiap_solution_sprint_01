@@ -1,0 +1,29 @@
+## install docker
+https://docs.docker.com/engine/install/ubuntu/#installation-methods
+
+
+## install git
+sudo apt-get update
+sudo apt-get install git-all
+
+git clone https://github.com/henriquepgomide/caRtola.git
+
+mkdir docker
+cd docker
+git clone https://github.com/fabiogjardim/bigdata_docker.git
+
+cd bigdata_docker
+docker-compose up -d
+
+cd ../caRtola
+docker cp data datanode:/home/  
+
+docker exec -it datanode bash
+
+hdfs dfs -mkdir /user/
+hdfs dfs -mkdir /user/root/
+hdfs dfs -mkdir 
+
+hdfs dfs -copyToLocal /user/root/lake/ /home/data/2020/
+
+hdfs dfs -ls /user/root/lake/
